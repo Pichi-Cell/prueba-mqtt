@@ -4,6 +4,7 @@ const options = {
     clientId: `nodejs_client_${Math.random().toString(16).slice(2, 8)}`,
     clean: true,
 };
+//conexión con mqtt
 const client = mqtt.connect(brokerUrl, options);
 
 

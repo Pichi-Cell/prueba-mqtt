@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');  // Requiere el paquete CORS
-const mqtt = require('mqtt');  // Asegúrate de agregar esta línea
 const { publishMessage } = require("./utils/mqttclients");
 // Crear una instancia de la aplicación
 const app = express();
