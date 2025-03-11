@@ -20,7 +20,7 @@ document.getElementById("equipoForm").addEventListener("submit", function (event
     console.log(JSON.stringify(data));
 
     // Enviar los datos al backend usando fetch
-    fetch('http://localhost:3000/', {
+    fetch('http://localhost:3000/formulario', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

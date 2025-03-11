@@ -1,5 +1,6 @@
 const express = require('express');
-
+const cors = require('cors');  // Requiere el paquete CORS
+const mqtt = require('mqtt');  // Asegúrate de agregar esta línea
 // Crear una instancia de la aplicación
 const app = express();
 
@@ -11,8 +12,10 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
+app.use(cors());
+
 // Configuración del cliente MQTT
-const mqttUrl = 'mqtt://localhost';  // Asegúrate de usar la URL del broker MQTT (localhost si está en el mismo servidor)
+const mqttUrl = 'http://175.10.0.127:1080';  // Asegúrate de usar la URL del broker MQTT (localhost si está en el mismo servidor)
 const mqttOptions = {
   clientId: 'nodejs-client',  // Un identificador único para el cliente MQTT
   clean: true,  // Si la conexión debe limpiarse al desconectar
@@ -41,11 +44,11 @@ app.get('/', (req, res) => {
 });
 
 // Una ruta más compleja (por ejemplo, obtener todos los usuarios)
-app.post('/usuarios', (req, res) => {
+app.post('/formulario', (req, res) => {
     // Aquí deberías poder acceder a los datos enviados en la solicitud
     const nuevoUsuario = req.body;
+    console.log(nuevoUsuario)
   
- // Publicar el nuevo usuario en un tema MQTT
  mqttClient.publish('nodered/usuarios', JSON.stringify(nuevoUsuario), (err) => {
     if (err) {
       console.error('Error al publicar en el tema MQTT:', err);
