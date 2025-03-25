@@ -1,33 +1,27 @@
-const express = require('express');
-const cors = require('cors');  // Requiere el paquete CORS
+const express = require("express");
+const cors = require("cors");
 const { publishMessage } = require("./utils/mqttclients");
-// Crear una instancia de la aplicación
+
 const app = express();
 
-// Definir el puerto en el que escuchará el servidor
 const port = 3000;
 
-// Middleware para procesar datos en formato JSON
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
 
-
-// Ruta de ejemplo para verificar si el servidor está funcionando
-app.get('/', (req, res) => {
-  res.send('¡Hola Mundo! API está funcionando');
+app.get("/", (req, res) => {
+  res.send("esto anda").status(200);
 });
 
-// Una ruta más compleja (por ejemplo, obtener todos los usuarios)
-app.post('/formulario', (req, res) => {
-  // Aquí deberías poder acceder a los datos enviados en la solicitud
-  const nuevoUsuario = req.body;
-  console.log(nuevoUsuario)
+app.post("/formulario", (req, res) => {
+  const formData = req.body;
+  console.log(formData);
 
-  publishMessage(`identificacion_TDB/informacion`, JSON.stringify(nuevoUsuario));
-
+  publishMessage(`config_raspis`, JSON.stringify(formData));
+  res.status(204).send();
 });
 
 // Iniciar el servidor
