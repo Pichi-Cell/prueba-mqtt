@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formulario de Configuracion</title>
-    <link rel="stylesheet" href="index.css"> <!-- Vinculamos el archivo CSS -->
-</head>
+    <link rel="stylesheet" href="index.css" />
+    <!-- Vinculamos el archivo CSS -->
+  </head>
 
-<body>
-
+  <body>
     <div class="form-container">
-        <h2>Formulario de Configuracion</h2>
-        <form id="equipoForm">
-            <label for="idEquipo">ID de Equipo:</label>
-            <input type="text" id="idEquipo" name="idEquipo" required>
+      <h2>Formulario de Configuracion</h2>
+      <form id="equipoForm">
+        <select name="raspis" id="raspis" onchange="obtenerFlows()">
+          <option value="" selected disabled hidden>Choose here</option>
+        </select>
+        <br />
+        <select name="flows" id="flows"></select>
+        <label for="idEquipo">ID de Equipo:</label>
+        <input type="text" id="idEquipo" name="idEquipo" required />
 
-            <button type="submit">Enviar</button>
-        </form>
+        <button type="submit">Enviar</button>
+      </form>
 
-        <div id="errorMessage" class="error"></div>
+      <div id="errorMessage" class="error"></div>
     </div>
 
-    <script src="index.js"></script> <!-- Vinculamos el archivo JS -->
-</body>
-
+    <script src="index.js"></script>
+    <!-- Vinculamos el archivo JS -->
+  </body>
 </html>
